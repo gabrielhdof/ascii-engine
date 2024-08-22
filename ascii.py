@@ -28,7 +28,6 @@ class Screen:
 
     def draw(self, char, x, y):
         self.display[x][y] = char
-        char_i = 0
         for i in range(len(char)):
             if (y + i) >= len(self.display[x]):
                 break
