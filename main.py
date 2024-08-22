@@ -13,7 +13,7 @@ while True:
     screen.fill()
     if x < screen.x:
         if y < screen.y:
-            screen.draw("x", x, y)
+            screen.draw("uwu", x, y)
             y += 1
         else:
             x += 1
@@ -21,4 +21,3 @@ while True:
 
     screen.update()
     screen.tick(30)
-
