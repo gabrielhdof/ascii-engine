@@ -1,4 +1,5 @@
 import os, time
+from sys import platform
 
 class Screen:
     def __init__(self, x, y, char):
@@ -7,6 +8,10 @@ class Screen:
         self.display = []
         self.char = char
         self.fill(char)
+        if platform == 'win32':
+            self.clear_command = "cls"
+        else:
+            self.clear_command = "clear"
     
     def fill(self, char = None):
         if char is None:
@@ -23,7 +28,7 @@ class Screen:
         self.display[x][y] = char
 
     def update(self):
-        os.system("cls")
+        os.system(self.clear_command)
         for row in self.display:
             line = ""
             for j in row:
