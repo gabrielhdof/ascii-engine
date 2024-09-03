@@ -46,6 +46,8 @@ class Screen:
             # Overwrite the line and clear the rest
             sys.stdout.write("\r" + line + "\033[K\n")
 
+        sys.stdout.flush()
+
     def tick(self, fps):
         ms = 1 / fps
         time.sleep(ms)

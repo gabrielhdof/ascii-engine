@@ -20,5 +20,4 @@ while True:
             x += 1
             y = 0
     screen.update()
-    sys.stdout.flush()
     screen.tick(30)
