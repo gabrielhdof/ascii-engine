@@ -1,6 +1,7 @@
 import os
 import time
 from sys import platform
+import sys
 
 
 class Screen:
@@ -14,6 +15,7 @@ class Screen:
             self.clear_command = "cls"
         else:
             self.clear_command = "clear"
+        os.system(self.clear_command)
 
     def fill(self, char=None):
         if char is None:
@@ -34,12 +36,15 @@ class Screen:
             self.display[x][y+i] = char[i]
 
     def update(self):
-        os.system(self.clear_command)
+
+        # Move cursor up by the number of lines in display
+        # testar [F
+        sys.stdout.write("\033[A" * (len(self.display)))
+
         for row in self.display:
-            line = ""
-            for j in row:
-                line += j
-            print(line)
+            line = "".join(row)
+            # Overwrite the line and clear the rest
+            sys.stdout.write("\r" + line + "\033[K\n")
 
     def tick(self, fps):
         ms = 1 / fps
